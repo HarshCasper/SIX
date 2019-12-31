@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>SIX Chat Room</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+    crossorigin="anonymous">
+  <link rel="icon" href="hacker.png">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</head>
+
+<body class="main">
+  <div class="container">
+    <h1 class="text-center heading">SIX Chat Room</h1>
+    <div class="messages">
+    </div>
+    <div class='msg-input'>
+      <label class="label" for="message">MESSAGE:</label>
+      <textarea placeholder="type your message here" rows="1" id="message" required autofocus />
+      </textarea>
+    </div>
+    <p class="text-center">Made With
+        <span style="color: 'red'">❤️</span> by
+        <a href="https://github.com/harshcasper" style="text-decoration: 'none';color: white"
+          target="_blank">Harsh Bardhan Mishra</a>
+      </p>
+  </div>
+  
+
+  <script>
+    var host = location.origin.replace(/^http/, 'ws')
+    var ws = new WebSocket(host);
+
+    ws.onopen = function () {
+      setTitle("You are Connected to SIX Chat Room 😃");
+    }
+
+    ws.onclose = function () {
+      setTitle("You are Disconnected from SIX Chat Room 😟");
+    }
+
+    ws.onmessage = function (payload) {
+      if(payload.data=='clear'){
+        $('.messages').empty();
+      }
+      else printMessage(payload.data);
+    }
+    
+    $('#message').bind('keydown', (e) => {
+      if (e.shiftKey && e.keyCode == 13) {
+        e.target.value = e.target.value + '\n';
+        e.preventDefault();
+      } else if (e.keyCode == 13) {
+        var val = e.target.value;
+        ws.send(val.trim());
+        $('#message').val('');
+      }
+    });
+
+    function setTitle(title) {
+      document.querySelector('h1').innerHTML = title;
+    }
+
+    function printMessage(message) {
+      var div = document.createElement('div');
+      div.innerHTML = message;
+      if (message.indexOf('pre') != -1) div.className = 'msg';
+      document.querySelector('div.messages').appendChild(div);
+    }
+  </script>
+</body>
+
+</html>

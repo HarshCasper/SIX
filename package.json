@@ -1,0 +1,24 @@
+{
+  "name": "six-chat",
+  "version": "1.0.0",
+  "description": "Chat Room Application built using Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app.js"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "chat",
+    "ws",
+    "socket"
+  ],
+  "author": "Harsh Bardhan Mishra",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.5",
+    "ws": "^3.2.0"
+  }
+}

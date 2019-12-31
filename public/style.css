@@ -1,0 +1,46 @@
+.main {
+  background-color: rgb(214, 18, 11);
+  color: rgb(18, 219, 98);
+}
+
+.heading {
+  margin: 20px 0;
+}
+
+.msg {
+  margin-left: 0px !important;
+  display: grid;
+  grid-template-columns: auto 9fr;
+}
+
+.msg-input{
+  display: flex;
+  flex-direction: row;
+}
+
+.label{
+  font-weight: bold;
+  color: white;
+  margin-right: 7px;
+}
+
+.serv-label {
+  font-weight: bold;
+  color: rgb(233, 72, 72);
+  width: 10%;
+}
+
+#message {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  outline: none;
+  width: 90%;
+}
+
+.usr-msg{
+  display: inline !important;
+  margin: 0 !important;
+  font-size: inherit !important;
+  color: inherit !important;
+}
